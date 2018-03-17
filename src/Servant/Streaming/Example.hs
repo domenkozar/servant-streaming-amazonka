@@ -6,7 +6,7 @@ module Servant.Streaming.Example (main) where
 
 import qualified Data.ByteString as BS
 import           Control.Lens
-import           Control.Monad.Trans.AWS  (runResourceT, runAWST, Region(..))
+import           Control.Monad.Trans.AWS  (runResourceT, Region(..))
 import           Network.AWS
 import           Network.AWS.Data.Body (RsBody(..))
 import           Network.AWS.S3
@@ -26,7 +26,7 @@ type API = "getfile" :> StreamResponseGet '[OctetStream]
 server :: Server API
 server =  do
   env <- newEnv Discover
-  runAWST env conduits
+  runAWS env conduits
 
 conduits :: (MonadAWS m, MonadResource m) => m (S.Stream (Of BS.ByteString) (ResourceT IO) ())
 conduits = do
