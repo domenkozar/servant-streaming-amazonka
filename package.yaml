@@ -1,0 +1,52 @@
+name:                servant-streaming-example
+version:             0.1.0.0
+github:              "githubuser/servant-streaming-example"
+license:             BSD3
+author:              "Author name here"
+maintainer:          "example@example.com"
+copyright:           "2018 Author name here"
+
+extra-source-files:
+- README.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on Github at <https://github.com/githubuser/servant-streaming-example#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- servant-streaming
+- servant-streaming-server
+- servant-server
+- servant
+- bytestring
+- resourcet
+- conduit
+- conduit-combinators
+- warp
+- wai
+- streaming
+- streaming-bytestring
+- amazonka
+- amazonka-core
+- amazonka-s3
+- lens
+
+library:
+  source-dirs: src
+
+executables:
+  servant-streaming-example-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - servant-streaming-example

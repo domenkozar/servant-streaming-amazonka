@@ -1,0 +1,27 @@
+resolver: lts-10.9
+
+# Use
+packages:
+- .
+- location:
+    git: https://github.com/plow-technologies/servant-streaming.git
+    commit: 48e6833f9c47a02b1dabe8f9233c006dc8379bb9
+  extra-dep: true
+  subdirs:
+    - servant-streaming-server
+    - servant-streaming
+- location:
+    git: https://github.com/haskell-servant/servant.git
+    commit: f8301a21e9e257d8e48f5fb4fbeaf55e8a21b020
+  extra-dep: true
+  subdirs:
+    - servant
+    - servant-server
+
+extra-deps:
+- streaming-wai-0.1.1
+- http-types-0.12.1
+- text-1.2.3.0
+
+nix:
+  packages: [zlib]
