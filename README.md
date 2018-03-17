@@ -7,7 +7,7 @@ Run:
 Results into:
 
 ```haskell
-error:
+src/Servant/Streaming/Example.hs:29:15: error:
     * No instance for (MonadAWS
                          (Control.Monad.Trans.AWS.AWST' Env Handle
 r))                                                                       arising from a use of `conduits'
