@@ -10,7 +10,7 @@ import           Control.Monad.Trans.AWS  (runResourceT, Region(..))
 import           Network.AWS
 import           Network.AWS.Data.Body (RsBody(..))
 import           Network.AWS.S3
-import           Control.Monad.Trans.Resource (ResourceT(..), MonadResource)
+import           Control.Monad.Trans.Resource (ResourceT(..), MonadResource, InternalState, runInternalState)
 import Data.Conduit                       (($$+-), ResumableSource(..))
 import Data.Conduit.List                  as CL
 import Servant
@@ -24,9 +24,9 @@ import qualified Streaming.Prelude        as S
 type API = "getfile" :> StreamResponseGet '[OctetStream]
 
 server :: Server API
-server =  do
+server = \st -> do
   env <- newEnv Discover
-  runAWS env conduits
+  runInternalState (runAWS env conduits) st
 
 conduits :: (MonadAWS m, MonadResource m) => m (S.Stream (Of BS.ByteString) (ResourceT IO) ())
 conduits = do
