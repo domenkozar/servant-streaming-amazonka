@@ -4,8 +4,8 @@ resolver: lts-10.9
 packages:
 - .
 - location:
-    git: https://github.com/plow-technologies/servant-streaming.git
-    commit: 48e6833f9c47a02b1dabe8f9233c006dc8379bb9
+    git: https://github.com/domenkozar/servant-streaming.git
+    commit: 101996d905ba938257e61c5223527fff542cc160
   extra-dep: true
   subdirs:
     - servant-streaming-server
