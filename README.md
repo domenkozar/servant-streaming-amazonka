@@ -1,4 +1,4 @@
-Example of servant-streaming and amazonka
+Example of [servant-streaming](https://github.com/plow-technologies/servant-streaming) and [amazonka](https://github.com/brendanhay/amazonka).
 
 Run:
 
